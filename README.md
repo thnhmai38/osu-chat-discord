@@ -1,6 +1,9 @@
 Cách dùng:
+
 B1: `git clone https://github.com/thanhgaming5550/osu-chat-discord.git`
+
 B2: `npm install`
+
 
 B3: 
 **Tạo 1 file `.env` và ghi các nội dung sau:**
