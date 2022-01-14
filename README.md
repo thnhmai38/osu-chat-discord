@@ -1,6 +1,11 @@
+**Yêu cầu cài đặt:**
+- [Node.js](https://nodejs.org/)
+- npm (đã được cài sẵn trong Node.js)
+
+
 **Cách dùng:**
 
-B1: `git clone https://github.com/thanhgaming5550/osu-chat-discord.git`
+B1: `git clone https://github.com/thanhgaming5550/osu-chat-discord.git` hoặc tải thủ công rồi giải nén. Vào thư mục đó.
 
 B2: `npm install`
 
