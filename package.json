@@ -2,7 +2,6 @@
   "dependencies": {
     "bancho.js": "^0.9.7",
     "discord.js": "^13.6.0",
-    "dot-env": "^0.0.1",
     "dotenv": "^11.0.0"
   },
   "name": "osu-chat-discord",
