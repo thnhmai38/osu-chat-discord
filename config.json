@@ -1,13 +1,13 @@
 {
     "channel" : [ 
         {
-            "channel":"931441005058736151",
-            "osucnn":"#osu"
+            "channel":"",
+            "osucnn":""
         }
     ], 
     "pm": [
         {
-            "channel": ""
+            "channel":""
         }
     ]
 }

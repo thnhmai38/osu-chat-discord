@@ -25,17 +25,16 @@ client.on('ready', () => {
         console.log("Đã kết nối tới osu!Bancho (" + process.env.NAME + ")");
         console.log('=========================================================================================================');
         if (pm.length > 0) {
-            console.log("Loading PM")
             osu.on("PM", (message) => {
                 for (let i = 0; i < pm.length; i++) {
                     client.channels.cache.get(pm[i].channel.toString()).send(`**${message.user.ircUsername}**: ${message.message}`);
                     console.log(`[PM] ${message.user.ircUsername}: ${message.message}`);
                 }
             })
-        } else console.log("Không có phần gửi tin nhắn từ PM osu")
+            console.log("Loaded PM chat Sync")
+        } else console.log("No PM chat Sync detected")
 
         if (channelsync.length > 0) {
-            console.log("Loading Channel chat");
             let channels = new Array;
 
             // Filter out duplicate channel from config file (why tho??)
@@ -52,17 +51,18 @@ client.on('ready', () => {
                     channelInstance.on("message", (message) => {
                         for (let i = 0; i < channelsync.length; i++) {
                             if (channelsync[i].osucnn === channel) {
-                                console.log(`${channel}: ${message.user.ircUsername}: ${message.message}`)
-                                client.channels.cache.get(channelsync[i].channel).send(`[${channel}] ${message.user.ircUsername}: ${message.message}`);
-    
+                                console.log(`[${channel}] ${message.user.ircUsername}: ${message.message}`)
+                                client.channels.cache.get(channelsync[i].channel).send(`**${message.user.ircUsername}**: ${message.message}`);
+
                                 break;
                             }
                         }
                     })
-    
+
                     console.log("Đã kết nối tới " + channel)
                 })
             }
+            console.log("No Channel chat Sync detected");
         }
     })
 })
