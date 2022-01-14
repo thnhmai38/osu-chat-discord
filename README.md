@@ -29,7 +29,7 @@ B4: Trong `config.json`, config theo mẫu:
         },
         ....
     ], 
-    "pm": [  //Theo dõi PM chat
+    "pm": [  //Theo dõi PM chat (Chat PM của người cho IRC)
         { //Xóa phần ngoặc nhọn {} nếu không dùng
             "channel": "//ID kênh muốn gửi"
         },
