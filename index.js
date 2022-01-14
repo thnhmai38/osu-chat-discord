@@ -29,7 +29,8 @@ client.on('ready', () => {
             console.log("Loading PM")
             osu.on("PM", (message) => {
                 for (let i = 0; i < pm.length; i++) {
-                    client.channels.cache.get(pm[i].channel.toString()).send(`${message.user.ircUsername}: ${message.message}`);
+                    client.channels.cache.get(pm[i].channel.toString()).send(`**${message.user.ircUsername}**: ${message.message}`);
+                    console.log(`[PM] **${message.user.ircUsername}**: ${message.message}`);
                 }
             })
         } else console.log("Không có phần gửi tin nhắn từ PM osu")
@@ -48,7 +49,7 @@ client.on('ready', () => {
                     for (let i = 0; i < channelsync.length; i++) {
                         if (channelsync[i].osucnn === channel[j]) {
                             console.log(`${channelsync[i].osucnn}: ${message.user.ircUsername}: ${message.message}`)
-                            client.channels.cache.get(channelsync[i].channel).send(`${message.user.ircUsername}: ${message.message}`);
+                            client.channels.cache.get(channelsync[i].channel).send(`[${channelsync[i].osucnn}] ${message.user.ircUsername}: ${message.message}`);
                         }
                     }
                 })
