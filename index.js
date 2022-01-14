@@ -12,8 +12,7 @@ const osu = new Banchojs.BanchoClient({
     password: process.env.IRC,
 });
 console.log('=========================================================================================================');
-console.log(process.env.NAME)
-console.log(process.env.IRC);
+
 client.on("error", console.error);
 
 client.on('ready', () => {
@@ -30,7 +29,7 @@ client.on('ready', () => {
             osu.on("PM", (message) => {
                 for (let i = 0; i < pm.length; i++) {
                     client.channels.cache.get(pm[i].channel.toString()).send(`**${message.user.ircUsername}**: ${message.message}`);
-                    console.log(`[PM] **${message.user.ircUsername}**: ${message.message}`);
+                    console.log(`[PM] ${message.user.ircUsername}: ${message.message}`);
                 }
             })
         } else console.log("Không có phần gửi tin nhắn từ PM osu")

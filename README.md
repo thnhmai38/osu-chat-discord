@@ -12,14 +12,14 @@ IRC= //IRC Password
 ```
 {
     "channel" : [ //Theo dõi kênh osu chat
-        {
+        {  //Xóa phần ngoặc nhọn {} nếu không dùng
             "channel":"ID_Kênh_Muốn_Gửi",
             "osucnn":"Name_của_osu_channel (có #)"
         },
         ....
     ], 
     "pm": [  //Theo dõi PM chat
-        {
+        { //Xóa phần ngoặc nhọn {} nếu không dùng
             "channel": "//ID kênh muốn gửi"
         },
         ....
