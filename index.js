@@ -35,23 +35,33 @@ client.on('ready', () => {
         } else console.log("Không có phần gửi tin nhắn từ PM osu")
 
         if (channelsync.length > 0) {
-            console.log("Loading Channel chat")
-            var channel = new Array;
-            for (let i = 0; i < channelsync.length; i++) {
-                if (channel.indexOf(channelsync[i].osucnn) == -1) {
-                    channel.push(channelsync[i].osucnn)
+            console.log("Loading Channel chat");
+            let channels = new Array;
+
+            // Filter out duplicate channel from config file (why tho??)
+            for (let channel of channelsync) {
+                if (channels.indexOf(channel.osucnn) === -1) {
+                    channels.push(channel.osucnn)
                 }
             }
-            for (let j = 0; j < channel.length; j++) {
-                osu.on(channel[j], (message) => {
-                    for (let i = 0; i < channelsync.length; i++) {
-                        if (channelsync[i].osucnn === channel[j]) {
-                            console.log(`${channelsync[i].osucnn}: ${message.user.ircUsername}: ${message.message}`)
-                            client.channels.cache.get(channelsync[i].channel).send(`[${channelsync[i].osucnn}] ${message.user.ircUsername}: ${message.message}`);
+
+            for (let channel of channels) {
+                let channelInstance = osu.getChannel(channel);
+
+                channelInstance.join().then(() => {
+                    channelInstance.on("message", (message) => {
+                        for (let i = 0; i < channelsync.length; i++) {
+                            if (channelsync[i].osucnn === channel) {
+                                console.log(`${channel}: ${message.user.ircUsername}: ${message.message}`)
+                                client.channels.cache.get(channelsync[i].channel).send(`[${channel}] ${message.user.ircUsername}: ${message.message}`);
+    
+                                break;
+                            }
                         }
-                    }
+                    })
+    
+                    console.log("Đã kết nối tới " + channel)
                 })
-                console.log("Đã kết nối tới " + channel[j])
             }
         }
     })
