@@ -1,3 +1,8 @@
+Cách dùng:
+B1: `git clone https://github.com/thanhgaming5550/osu-chat-discord.git`
+B2: `npm install`
+
+B3: 
 **Tạo 1 file `.env` và ghi các nội dung sau:**
 ```
 TOKEN= //Token Discord Bot của bạn
@@ -7,8 +12,7 @@ IRC= //IRC Password
 *Để lấy IRC, truy cập [trang web này](https://osu.ppy.sh/p/irc)*
 
 
-
-**Trong `config.json`, config theo mẫu:**
+B4:**Trong `config.json`, config theo mẫu:**
 ```
 {
     "channel" : [ //Theo dõi kênh osu chat
@@ -27,3 +31,4 @@ IRC= //IRC Password
 }
 ```
 
+B5: `node index.js`

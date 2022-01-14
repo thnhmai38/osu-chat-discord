@@ -44,7 +44,6 @@ client.on('ready', () => {
             }
             for (let j = 0; j < channel.length; j++) {
                 osu.on(channel[j], (message) => {
-                    console.log("KNOWN")
                     for (let i = 0; i < channelsync.length; i++) {
                         if (channelsync[i].osucnn === channel[j]) {
                             console.log(`${channelsync[i].osucnn}: ${message.user.ircUsername}: ${message.message}`)
