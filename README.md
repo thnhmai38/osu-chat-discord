@@ -34,8 +34,3 @@ B4: Trong `config.json`, config theo mẫu:
 ```
 
 B5: `node index.js`
-
-
-
-
-**//Thanks [Belikhun](https://github.com/Belikhun)**
