@@ -11,7 +11,6 @@ const osu = new Banchojs.BanchoClient({
     username: process.env.NAME,
     password: process.env.IRC,
 });
-console.log('=========================================================================================================');
 
 client.on("error", console.error);
 
@@ -26,12 +25,12 @@ client.on('ready', () => {
         console.log('=========================================================================================================');
         if (pm.length > 0) {
             osu.on("PM", (message) => {
+                console.log(`[PM] ${message.user.ircUsername}: ${message.message}`);
                 for (let i = 0; i < pm.length; i++) {
-                    client.channels.cache.get(pm[i].channel.toString()).send(`**${message.user.ircUsername}**: ${message.message}`);
-                    console.log(`[PM] ${message.user.ircUsername}: ${message.message}`);
+                    client.channels.cache.get(pm[i].channel).send(`**${message.user.ircUsername}**: ${message.message}`);
                 }
             })
-            console.log("Loaded PM chat Sync")
+            console.log("Đã kết nối tới PM chat")
         } else console.log("No PM chat Sync detected")
 
         if (channelsync.length > 0) {
@@ -63,8 +62,10 @@ client.on('ready', () => {
                 })
             }
         } else console.log("No Channel chat Sync detected");
+        console.log('=========================================================================================================');
     })
 })
+console.log('=========================================================================================================');
 
 client.login(process.env.TOKEN).then((token) => {
     client.user.setPresence({

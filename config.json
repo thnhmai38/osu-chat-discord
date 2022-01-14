@@ -2,10 +2,17 @@
     "channel" : [ 
         {
             "channel":"",
-            "osucnn":""
+            "osucnn":"#osu"
+        },
+        {
+            "channel":"",
+            "osucnn":"#vietnamese"
         }
     ], 
     "pm": [
+        {
+            "channel":""
+        },
         {
             "channel":""
         }
