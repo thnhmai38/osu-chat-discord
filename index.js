@@ -62,8 +62,7 @@ client.on('ready', () => {
                     console.log("Đã kết nối tới " + channel)
                 })
             }
-            console.log("No Channel chat Sync detected");
-        }
+        } else console.log("No Channel chat Sync detected");
     })
 })
 
