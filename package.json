@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "bancho.js": "^0.9.7",
+    "discord.js": "^13.6.0"
+  },
+  "name": "osu-chat-discord",
+  "version": "1.0.0",
+  "description": "Sync osu Bancho Chat and send it to Discord channel",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thanhgaming5550/osu-chat-discord.git"
+  },
+  "keywords": [
+    "osu",
+    "bancho",
+    "chat",
+    "sync",
+    "discord"
+  ],
+  "author": "thanhgaming5550",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thanhgaming5550/osu-chat-discord/issues"
+  },
+  "homepage": "https://github.com/thanhgaming5550/osu-chat-discord#readme"
+}
