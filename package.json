@@ -5,7 +5,7 @@
     "dotenv": "^11.0.0"
   },
   "name": "osu-chat-discord",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sync osu Bancho Chat and send it to Discord channel",
   "main": "index.js",
   "scripts": {

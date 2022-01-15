@@ -26,8 +26,12 @@ client.on('ready', () => {
         if (pm.length > 0) {
             osu.on("PM", (message) => {
                 console.log(`[PM] ${message.user.ircUsername}: ${message.message}`);
+                let msg;
+                if (message.message.indexOf(`ACTION`) === 0) {
+                    msg = `***${message.user.ircUsername}**` + message.message.replace(`ACTION`, ``).slice(0, -1);
+                } else msg = `**${message.user.ircUsername}**: ${message.message}`
                 for (let i = 0; i < pm.length; i++) {
-                    client.channels.cache.get(pm[i].channel).send(`**${message.user.ircUsername}**: ${message.message}`);
+                    client.channels.cache.get(pm[i].channel).send(msg);
                 }
             })
             console.log("Đã kết nối tới PM chat")
@@ -51,7 +55,11 @@ client.on('ready', () => {
                         for (let i = 0; i < channelsync.length; i++) {
                             if (channelsync[i].osucnn === channel) {
                                 console.log(`[${channel}] ${message.user.ircUsername}: ${message.message}`)
-                                client.channels.cache.get(channelsync[i].channel).send(`**${message.user.ircUsername}**: ${message.message}`);
+                                let msg;
+                                if (message.message.indexOf(`ACTION`) === 0) {
+                                    msg = `***${message.user.ircUsername}**` + message.message.replace(`ACTION`, ``).slice(0, -1);
+                                } else msg = `**${message.user.ircUsername}**: ${message.message}`
+                                client.channels.cache.get(channelsync[i].channel).send(msg);
 
                                 break;
                             }
