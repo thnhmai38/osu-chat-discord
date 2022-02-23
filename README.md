@@ -12,7 +12,7 @@
 
 ## Yêu cầu cài đặt
 * [Node.js](https://nodejs.org/)
-* npm (đã được cài sẵn trong Node.js)
+* npm (ngầm định trong Node.js)
 
 
 ## Cách dùng:
