@@ -23,9 +23,9 @@
 
 3. Tạo 1 file `.env` và ghi các nội dung sau:
 ```
-TOKEN= //Token Discord Bot của bạn
-NAME= //Name osu username (IRC)
-IRC= //IRC Password
+TOKEN= #Token Discord Bot của bạn
+NAME= #Name osu username (IRC)
+IRC= #IRC Password
 ```
 *Để lấy IRC, truy cập [trang web này](https://osu.ppy.sh/p/irc)*
 
