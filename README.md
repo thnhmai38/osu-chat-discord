@@ -10,7 +10,7 @@
     <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/thanhgaming5550/osu-chat-discord">
 </p>
 
-## Yêu cầu cài đặt
+## Yêu cầu cài đặt:
 * [Node.js](https://nodejs.org/)
 * npm (ngầm định trong Node.js)
 
