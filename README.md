@@ -11,7 +11,7 @@
 </p>
 
 ## Yêu cầu cài đặt:
-* [Node.js](https://nodejs.org/)
+* [Node.js](https://nodejs.org/) >=16.6.0
 * npm (ngầm định trong Node.js)
 
 
