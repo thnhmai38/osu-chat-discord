@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/thanhgaming5550/osu-chat-discord/issues"
   },
-  "homepage": "https://github.com/thanhgaming5550/osu-chat-discord#readme"
+  "homepage": "https://github.com/thanhgaming5550/osu-chat-discord#readme",
+  "engines" : { 
+    "node" : ">=16.6.0"
+  }
 }
