@@ -22,7 +22,7 @@
 2. Chạy `npm install`
 
 3. Tạo 1 file `.env` và ghi các nội dung sau:
-```
+```env
 TOKEN= #Token Discord Bot của bạn
 NAME= #Name osu username (IRC)
 IRC= #IRC Password
@@ -31,20 +31,18 @@ IRC= #IRC Password
 
 
 4. Trong `config.json`, config theo mẫu:
-```
+```cfg
 {
     "channel" : [ #Theo dõi kênh osu chat
         {  #Xóa phần ngoặc nhọn {} nếu không dùng
             "channel":"ID_Kênh_Muốn_Gửi",
             "osucnn":"Name_của_osu_channel (có chứa #)"
-        },
-        #....
+        }#,....
     ], 
     "pm": [  #Theo dõi PM chat (Chat PM của người cho IRC)
         { #Xóa phần ngoặc nhọn {} nếu không dùng
             "channel": "ID_Kênh_Muốn_Gửi"
-        },
-        #....
+        }#,....
     ]
 }
 ```
