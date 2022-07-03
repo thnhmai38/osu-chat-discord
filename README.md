@@ -42,7 +42,7 @@ IRC= #IRC Password
     ], 
     "pm": [  #Theo dõi PM chat (Chat PM của người cho IRC)
         { #Xóa phần ngoặc nhọn {} nếu không dùng
-            "channel": "ID kênh muốn gửi"
+            "channel": "ID_Kênh_Muốn_Gửi"
         },
         #....
     ]
