@@ -50,3 +50,12 @@ IRC= //IRC Password
 ```
 
 5. Chạy `node index.js`
+
+## Mở rộng:
+- Bạn có thể thay đổi cách hiển thị đầu ra tin nhắn trên Discord theo ý bạn bằng cách tùy chỉnh nó (đối với channel chat) ở dòng 60 (cho tin nhắn dạng /np, /me,...) https://github.com/thanhgaming5550/osu-chat-discord/blob/5de753be2677b09b8b21af2f220b8b7ceb55ef8a/index.js#L60 và dòng 61 (dạng tin nhắn thường) https://github.com/thanhgaming5550/osu-chat-discord/blob/5de753be2677b09b8b21af2f220b8b7ceb55ef8a/index.js#L61
+
+
+  **Trong đó các biến:** ```message.user.ircUsername``` là tên người gửi, ```message.message.replace(`�ACTION`, ``).slice(0, -1)``` là nội dung tin nhắn sau khi đã được xử lý **ACTION** (chỉ cho tin nhắn dạng /np, /me,...), ```message.message``` là nội dung tin nhắn nguyên gốc, ```channel``` là tên kênh mà tin nhắn đó được gửi trên osu!Bancho
+  
+  
+    *Tương tự với PM Chat, dòng 31 (cho tin nhắn dạng /np, /me,...) https://github.com/thanhgaming5550/osu-chat-discord/blob/5de753be2677b09b8b21af2f220b8b7ceb55ef8a/index.js#L31 và dòng 32 (dạng tin nhắn thường) https://github.com/thanhgaming5550/osu-chat-discord/blob/5de753be2677b09b8b21af2f220b8b7ceb55ef8a/index.js#L32 
