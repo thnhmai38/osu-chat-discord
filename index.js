@@ -21,7 +21,7 @@ client.on('ready', () => {
     console.log(`${client.user.tag} đã sẵn sàng`);
 
     osu.connect().then(() => {
-        console.log("Đã kết nối tới osu!Bancho (" + process.env.NAME + ")");
+        console.log("Connected to osu!Bancho (" + process.env.NAME + ").");
         console.log('=========================================================================================================');
         if (pm.length > 0) {
             osu.on("PM", (message) => {
@@ -34,7 +34,7 @@ client.on('ready', () => {
                     client.channels.cache.get(pm[i].channel).send(msg);
                 }
             })
-            console.log("Đã kết nối tới PM chat")
+            console.log("Connected to PM chat.")
         } else console.log("No PM chat Sync detected")
 
         if (channelsync.length > 0) {
@@ -66,7 +66,7 @@ client.on('ready', () => {
                         }
                     })
 
-                    console.log("Đã kết nối tới " + channel)
+                    console.log("Connected to " + channel+".")
                 })
             }
         } else console.log("No Channel chat Sync detected");
