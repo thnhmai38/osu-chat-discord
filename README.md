@@ -34,13 +34,13 @@ IRC= #IRC Password
 {
     "channel" : [ #Follow osu chat channels
         {  #Delete the curly braces {} if not in use
-            "channel":"ID_Channel_To_Send",
+            "channel":"Discord_Channel_ID_To_Send_To",
             "osucnn":"osu_channel_name (containing #)"
         }#,....
     ], 
     "pm": [  #Follow PM chat (PM chat of those who connect via IRC)
         { #Delete the curly braces {} if not in use
-            "channel": "ID_Channel_To_Send"
+            "channel": "Discord_Channel_ID_To_Send_To"
         }#,....
     ]
 }
