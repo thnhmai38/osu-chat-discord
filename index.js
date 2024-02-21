@@ -18,7 +18,7 @@ client.on('ready', () => {
     client.user.setActivity(`osu!`, {
         type: "PLAYING"
     })
-    console.log(`${client.user.tag} đã sẵn sàng`);
+    console.log(`${client.user.tag} ready.`);
 
     osu.connect().then(() => {
         console.log("Connected to osu!Bancho (" + process.env.NAME + ").");
@@ -79,7 +79,7 @@ client.login(process.env.TOKEN).then((token) => {
     client.user.setPresence({
         status: 'online',
     });
-    console.log(`Đã đăng nhập vào ${client.user.tag}`)
+    console.log(`Logged in as ${client.user.tag}`)
 });
 
 process.on('uncaughtException', function (err) {
