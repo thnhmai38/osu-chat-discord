@@ -9,7 +9,7 @@
 </p>
 
 ## Requirements:
-* [Node.js](https://nodejs.org/) >=16.6.0 (with npm)
+* [Node.js](https://nodejs.org/) >=16.6.0 (*with npm*)
 
 ## Usage:
 
