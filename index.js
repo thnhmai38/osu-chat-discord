@@ -30,9 +30,6 @@ function rawProcessing(message, osuChannel) {
         }
     };
 }
-function logging(msg) {
-    return unescape(msg);
-}
 
 //? Main-Function
 async function pm() {

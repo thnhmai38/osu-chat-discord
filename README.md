@@ -47,7 +47,4 @@ IRC= #IRC Password
 5. Run `node index.js`
 
 ## Customization:
-
-*update soon...*
-
-`config/language.json`
+You can customizate the output in `config/language.json`
