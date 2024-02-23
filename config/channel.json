@@ -1,0 +1,13 @@
+{
+    "channel": {
+        "enabled": true,
+        "channels": {
+            "#vietnamese": ["1210607652195930143"],
+            "#osu": ["1210606669000871940"]
+        }
+    },
+    "pm": {
+        "enabled": true,
+        "channels": ["1210607593308028948"]
+    } 
+}
