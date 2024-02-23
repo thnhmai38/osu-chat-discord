@@ -1,87 +1,102 @@
-const Discord = require("discord.js");
-const client = new Discord.Client({
-    intents: ["GUILDS", "GUILD_MESSAGES"]
-});
+//Setup Client
 require("dotenv").config();
-const config = require("./config.json")
-const channelsync = config.channel;
-const pm = config.pm;
+const Discord = require("discord.js");
+const Mustache = require('mustache');
+const client = new Discord.Client({intents: ["GUILDS", "GUILD_MESSAGES"]});
 const Banchojs = require("bancho.js");
 const osu = new Banchojs.BanchoClient({
     username: process.env.NAME,
     password: process.env.IRC,
 });
+Mustache.escape = (value) => {return value}; //For Escape HTML Char Code
 
+//Save Configuration
+const config = require("./config/channel.json")
+const channelConfiguration = config.channel;
+const pmConfiguration = config.pm;
+const language = require("./config/language.json");
+
+//? Sub-Function
+function rawProcessing(message, osuChannel) {
+    if (!osuChannel) osuChannel="PM";
+    let isAction=false;
+    if (message.message.indexOf(`ACTION`) === 0) isAction=true;
+    return {
+        isAction: isAction,
+        data: {
+            user: message.user.ircUsername,
+            content: (isAction ? message.message.replace(`ACTION`, ``).slice(0, -1) : message.message),
+            channel: osuChannel
+        }
+    };
+}
+
+//? Main-Function
+async function pm() {
+    osu.on("PM", (message) => {
+        let msg = rawProcessing(message);
+        console.log(Mustache.render(msg.isAction ? language.log.pm.action : language.log.pm.normal, msg.data));
+        for (const discordChannel of pmConfiguration.channels) 
+            client.channels.cache.get(discordChannel).send(
+                Mustache.render(msg.isAction ? language.message.pm.action : language.message.pm.normal, msg.data)
+            ).catch((err) => {
+                console.error(Mustache.render(language.discordUnableMessage, {channel: discordChannel, err: err}));
+            });;
+    })
+    console.log(language.pmEnabled)
+}
+async function channel() {
+    for (const osuChannel in channelConfiguration.channels) {
+        let channelInstance = osu.getChannel(osuChannel);
+        try {
+            await channelInstance.join().then(() => {
+                console.log(Mustache.render(language.osuChannelConnected, {channel: osuChannel}))
+            });
+        } 
+        catch {
+            console.log(Mustache.render(language.osuChannelUnable, {channel: osuChannel}));
+            continue;
+        }
+
+        channelInstance.on("message", (message) => {
+            for (const discordChannel of channelConfiguration.channels[osuChannel])
+            {
+                let msg = rawProcessing(message, osuChannel)
+                console.log(Mustache.render(msg.isAction ? language.log.channel.action : language.log.channel.normal, msg.data));
+                client.channels.cache.get(discordChannel).send(
+                    Mustache.render(msg.isAction ? language.message.channel.action : language.message.channel.normal, msg.data)
+                ).catch((err) => {
+                    console.error(Mustache.render(language.discordUnableMessage, {channel: discordChannel, err: err}));
+                });
+            }
+        })
+    }
+}
+
+
+//Main Process
 client.on("error", console.error);
+client.on('ready', async () => {
+    try {
+        await osu.connect().then(() => {
+            console.log(Mustache.render(language.onConnected, {name: process.env.NAME}));
+        })
+    } catch {
+        console.error(Mustache.render(language.osuChannelUnable, {err: err}))
+    }
+   
+    console.log(language.line);
+        if (pmConfiguration.enabled)  await pm(); else console.log(language.pmDisabled)
+        if (channelConfiguration.enabled) await channel(); else console.log(language.channelDisabled);
+    console.log(language.line);
 
-client.on('ready', () => {
-    client.user.setActivity(`osu!`, {
-        type: "PLAYING"
-    })
-    console.log(`${client.user.tag} đã sẵn sàng`);
-
-    osu.connect().then(() => {
-        console.log("Đã kết nối tới osu!Bancho (" + process.env.NAME + ")");
-        console.log('=========================================================================================================');
-        if (pm.length > 0) {
-            osu.on("PM", (message) => {
-                console.log(`[PM] ${message.user.ircUsername}: ${message.message}`);
-                let msg;
-                if (message.message.indexOf(`ACTION`) === 0) {
-                    msg = `***${message.user.ircUsername}**` + message.message.replace(`ACTION`, ``).slice(0, -1);
-                } else msg = `**${message.user.ircUsername}**: ${message.message}`
-                for (let i = 0; i < pm.length; i++) {
-                    client.channels.cache.get(pm[i].channel).send(msg);
-                }
-            })
-            console.log("Đã kết nối tới PM chat")
-        } else console.log("No PM chat Sync detected")
-
-        if (channelsync.length > 0) {
-            let channels = new Array;
-
-            // Filter out duplicate channel from config file (why tho??)
-            for (let channel of channelsync) {
-                if (channels.indexOf(channel.osucnn) === -1) {
-                    channels.push(channel.osucnn)
-                }
-            }
-
-            for (let channel of channels) {
-                let channelInstance = osu.getChannel(channel);
-
-                channelInstance.join().then(() => {
-                    channelInstance.on("message", (message) => {
-                        for (let i = 0; i < channelsync.length; i++) {
-                            if (channelsync[i].osucnn === channel) {
-                                console.log(`[${channel}] ${message.user.ircUsername}: ${message.message}`)
-                                let msg;
-                                if (message.message.indexOf(`ACTION`) === 0) {
-                                    msg = `***${message.user.ircUsername}**` + message.message.replace(`ACTION`, ``).slice(0, -1);
-                                } else msg = `**${message.user.ircUsername}**: ${message.message}`
-                                client.channels.cache.get(channelsync[i].channel).send(msg);
-
-                                break;
-                            }
-                        }
-                    })
-
-                    console.log("Đã kết nối tới " + channel)
-                })
-            }
-        } else console.log("No Channel chat Sync detected");
-        console.log('=========================================================================================================');
-    })
+    client.user.setActivity(`osu!`, {type: "PLAYING"})
+    console.log(Mustache.render(language.onReady, {name: client.user.tag}));
 })
-console.log('=========================================================================================================');
 
-client.login(process.env.TOKEN).then((token) => {
-    client.user.setPresence({
-        status: 'online',
-    });
-    console.log(`Đã đăng nhập vào ${client.user.tag}`)
+client.login(process.env.TOKEN).then(() => {
+    client.user.setPresence({status: 'online',});
+    console.log(Mustache.render(language.onLogged, {name: client.user.tag}));
 });
 
-process.on('uncaughtException', function (err) {
-    console.error(err);
-});
+process.on('uncaughtException', (err) => console.error(err));

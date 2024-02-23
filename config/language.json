@@ -1,0 +1,36 @@
+{
+    "onReady" : "{{name}} is ready!",
+    "onLogged": "Logged as {{name}}",
+    "line":"=========================================================================================================",
+
+    "onConnected": "Connected to osu!Bancho (As {{name}})",
+    "unableConnect": "Can't connect to osu!Bancho ({{err}})",
+    "pmDisabled": "PM Disabled!",
+    "channelDisabled": "Channel Disabled!",
+
+    "pmEnabled": "Connected to PM",
+    "osuChannelConnected": "Connected to {{channel}}",
+    "osuChannelUnable":"Can't connect to osu channel: {{channel}}",
+    "discordUnableMessage": "Can't send message to discord channel: {{channel}} ({{err}})",
+
+    "log":{
+        "pm": {
+            "action":"[PM] *{{user}}: {{content}}",
+            "normal":"[PM] {{user}}: {{content}}"
+        },
+        "channel": {
+            "action":"[{{channel}}] *{{user}}: {{content}}",
+            "normal":"[{{channel}}] {{user}}: {{content}}"
+        }
+    },
+    "message":{
+        "pm": {
+            "action":"***{{user}}**: {{content}}",
+            "normal":"**{{user}}**: {{content}}"
+        },
+        "channel": {
+            "action":"***{{user}}**: {{content}}",
+            "normal":"**{{user}}**: {{content}}"
+        }
+    }
+}
